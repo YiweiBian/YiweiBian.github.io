@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ZW Foods | Wholesale Food Supplier</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --green: #2a8a2a;
+      --green-dark: #1a5e1a;
+      --green-light: #3eb83e;
+      --yellow: #c8d400;
+      --white: #ffffff;
+      --off-white: #f7f9f4;
+      --gray: #555;
+      --dark: #1a1a1a;
+      --border: #e0ead0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', 'Noto Sans SC', sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    .cn { display: none; }
+    body.lang-cn .en { display: none; }
+    body.lang-cn .cn { display: block; }
+    body.lang-cn span.en { display: none; }
+    body.lang-cn span.cn { display: inline; }
+    span.cn { display: none; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 70px;
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+    }
+
+    .nav-logo-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      color: var(--green);
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--green); }
+
+    .lang-toggle {
+      display: flex;
+      background: var(--off-white);
+      border: 2px solid var(--border);
+      border-radius: 30px;
+      overflow: hidden;
+    }
+
+    .lang-btn {
+      padding: 6px 16px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gray);
+      transition: all 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .lang-btn.active {
+      background: var(--green);
+      color: white;
+      border-radius: 30px;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1a5e1a 0%, #2a8a2a 50%, #3eb83e 100%);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 70px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(200,212,0,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -150px; left: -150px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 48px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 30px;
+      padding: 6px 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero-badge::before {
+      content: '●';
+      color: var(--yellow);
+      font-size: 0.6rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 6vw, 5.5rem);
+      color: white;
+      line-height: 1;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: var(--yellow);
+      display: block;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      font-weight: 300;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--yellow);
+      color: var(--green-dark);
+      padding: 14px 32px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      background: white;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      padding: 14px 32px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 2px solid rgba(255,255,255,0.5);
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: white;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 24px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.2s;
+    }
+
+    .stat-card:hover { transform: translateY(-4px); }
+
+    .stat-card .icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .stat-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      color: var(--yellow);
+      letter-spacing: 1px;
+      line-height: 1;
+    }
+
+    .stat-card p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.8);
+      margin-top: 4px;
+    }
+
+    /* TICKER */
+    .ticker {
+      background: var(--green-dark);
+      padding: 12px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ticker-inner {
+      display: inline-flex;
+      gap: 60px;
+      animation: ticker 30s linear infinite;
+    }
+
+    .ticker-item {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .ticker-item::before { content: '✦'; color: var(--yellow); }
+
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* SECTIONS */
+    section { padding: 100px 48px; }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      color: var(--dark);
+      letter-spacing: 2px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--gray);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    /* PRODUCTS */
+    #products { background: var(--off-white); }
+
+    .products-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--border);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .product-card {
+      background: white;
+      padding: 40px 32px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 3px;
+      background: var(--green);
+      transition: width 0.3s;
+    }
+
+    .product-card:hover::after { width: 100%; }
+    .product-card:hover { background: #f0f7f0; }
+
+    .product-icon {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .product-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .product-card p {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* SERVICE AREA */
+    #coverage { background: white; }
+
+    .coverage-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .coverage-visual {
+      position: relative;
+    }
+
+    .coverage-map-bg {
+      background: linear-gradient(135deg, #f0f7f0, #e8f5e8);
+      border-radius: 20px;
+      padding: 48px;
+      border: 2px solid var(--border);
+    }
+
+    .area-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 40px;
+    }
+
+    .area-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      background: white;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+
+    .area-item:hover {
+      border-color: var(--green);
+      background: #f0f7f0;
+    }
+
+    .area-item::before {
+      content: '📍';
+      font-size: 1rem;
+    }
+
+    .hours-card {
+      background: var(--green);
+      color: white;
+      border-radius: 16px;
+      padding: 32px;
+      margin-top: 32px;
+    }
+
+    .hours-card h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+      color: var(--yellow);
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      font-size: 0.95rem;
+    }
+
+    .hours-row:last-child { border-bottom: none; }
+    .hours-row span:last-child { font-weight: 600; }
+
+    /* WHY US */
+    #why { background: var(--green-dark); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-top: 60px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .why-card {
+      padding: 40px 28px;
+      background: rgba(255,255,255,0.05);
+      transition: background 0.2s;
+    }
+
+    .why-card:hover { background: rgba(255,255,255,0.1); }
+
+    .why-icon {
+      font-size: 2.4rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .why-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      color: var(--yellow);
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .why-card p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+    }
+
+    #why .section-title { color: white; }
+    #why .section-label { color: var(--yellow); }
+    #why .section-desc { color: rgba(255,255,255,0.7); }
+
+    /* CONTACT */
+    #contact { background: var(--off-white); }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      text-decoration: none;
+      transition: all 0.2s;
+      color: var(--dark);
+    }
+
+    .contact-card:hover {
+      border-color: var(--green);
+      transform: translateX(6px);
+      box-shadow: 0 4px 20px rgba(42,138,42,0.1);
+    }
+
+    .contact-card-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .contact-card-icon.phone { background: #e8f5e8; }
+    .contact-card-icon.wechat { background: #e8f5e8; }
+    .contact-card-icon.email { background: #fff8e1; }
+
+    .contact-card-info h4 {
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gray);
+      margin-bottom: 4px;
+    }
+
+    .contact-card-info p {
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--dark);
+    }
+
+    .contact-form-side h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .contact-form-side p {
+      color: var(--gray);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gray);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 14px 18px;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: 'DM Sans', sans-serif;
+      background: white;
+      transition: border-color 0.2s;
+      color: var(--dark);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--green);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .form-submit {
+      width: 100%;
+      background: var(--green);
+      color: white;
+      border: none;
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'DM Sans', sans-serif;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .form-submit:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(42,138,42,0.3);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.6);
+      padding: 60px 48px 32px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-top: 16px;
+      max-width: 320px;
+    }
+
+    .footer-col h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--yellow); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom span { color: var(--yellow); }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 60px 20px; }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        padding: 60px 20px;
+        gap: 40px;
+      }
+
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+
+      .products-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .coverage-layout,
+      .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .area-list { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .products-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ANIMATIONS */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="logo.jpg" alt="ZW Foods Logo" onerror="this.style.display='none'"/>
+      <span class="nav-logo-text">ZW FOODS</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#products"><span class="en">Products</span><span class="cn">产品</span></a></li>
+      <li><a href="#coverage"><span class="en">Coverage</span><span class="cn">配送范围</span></a></li>
+      <li><a href="#why"><span class="en">Why Us</span><span class="cn">为什么选择我们</span></a></li>
+      <li><a href="#contact"><span class="en">Contact</span><span class="cn">联系我们</span></a></li>
+    </ul>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('cn')">中文</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge">
+          <span class="en">Wholesale Food Supplier</span>
+          <span class="cn">餐饮食材批发供应商</span>
+        </div>
+        <h1 class="en">FRESH<span>INGREDIENTS</span>DELIVERED DAILY</h1>
+        <h1 class="cn">新鲜食材<span>每日配送</span>品质保证</h1>
+        <p class="hero-sub en">Premium wholesale ingredients for restaurants across New York, New Jersey, North Carolina, and Houston. Morning to evening delivery, competitive pricing.</p>
+        <p class="hero-sub cn">为纽约、新泽西、北卡罗来纳及休斯顿地区餐厅提供优质批发食材。早晚全天配送，价格实惠。</p>
+        <div class="hero-cta">
+          <a href="tel:9293174160" class="btn-primary">
+            📞 <span class="en">Call to Order</span><span class="cn">电话订购</span>
+          </a>
+          <a href="#contact" class="btn-secondary">
+            <span class="en">Get a Quote</span><span class="cn">获取报价</span>
+          </a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <span class="icon">🥩</span>
+          <h3>6+</h3>
+          <p class="en">Product Categories</p>
+          <p class="cn">产品类别</p>
+        </div>
+        <div class="stat-card">
+          <span class="icon">📍</span>
+          <h3>7</h3>
+          <p class="en">Areas Served</p>
+          <p class="cn">配送区域</p>
+        </div>
+        <div class="stat-card">
+          <span class="icon">🌅</span>
+          <h3>AM–PM</h3>
+          <p class="en">Daily Delivery</p>
+          <p class="cn">每日配送</p>
+        </div>
+        <div class="stat-card">
+          <span class="icon">💰</span>
+          <h3 class="en">LOW</h3>
+          <h3 class="cn">实惠</h3>
+          <p class="en">Wholesale Pricing</p>
+          <p class="cn">批发价格</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span class="ticker-item en">Fresh Meat</span>
+      <span class="ticker-item en">Premium Seafood</span>
+      <span class="ticker-item en">Frozen Foods</span>
+      <span class="ticker-item en">Dry Goods</span>
+      <span class="ticker-item en">Fresh Vegetables</span>
+      <span class="ticker-item en">Packaging Supplies</span>
+      <span class="ticker-item en">Manhattan Delivery</span>
+      <span class="ticker-item en">Flushing Delivery</span>
+      <span class="ticker-item en">NJ Delivery</span>
+      <span class="ticker-item en">Brooklyn Delivery</span>
+      <span class="ticker-item cn">新鲜肉类</span>
+      <span class="ticker-item cn">优质海鲜</span>
+      <span class="ticker-item cn">冷冻食品</span>
+      <span class="ticker-item cn">干货调料</span>
+      <span class="ticker-item cn">新鲜蔬菜</span>
+      <span class="ticker-item cn">餐盒包装</span>
+      <!-- duplicate for seamless loop -->
+      <span class="ticker-item en">Fresh Meat</span>
+      <span class="ticker-item en">Premium Seafood</span>
+      <span class="ticker-item en">Frozen Foods</span>
+      <span class="ticker-item en">Dry Goods</span>
+      <span class="ticker-item en">Fresh Vegetables</span>
+      <span class="ticker-item en">Packaging Supplies</span>
+      <span class="ticker-item en">Manhattan Delivery</span>
+      <span class="ticker-item en">Flushing Delivery</span>
+      <span class="ticker-item en">NJ Delivery</span>
+      <span class="ticker-item en">Brooklyn Delivery</span>
+      <span class="ticker-item cn">新鲜肉类</span>
+      <span class="ticker-item cn">优质海鲜</span>
+      <span class="ticker-item cn">冷冻食品</span>
+      <span class="ticker-item cn">干货调料</span>
+      <span class="ticker-item cn">新鲜蔬菜</span>
+      <span class="ticker-item cn">餐盒包装</span>
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <section id="products">
+    <div class="section-inner">
+      <div class="products-header fade-up">
+        <div>
+          <p class="section-label en">What We Supply</p>
+          <p class="section-label cn">我们的产品</p>
+          <h2 class="section-title en">WHOLESALE<br>PRODUCTS</h2>
+          <h2 class="section-title cn">批发产品<br>种类齐全</h2>
+        </div>
+        <p class="section-desc en">Everything your restaurant needs, sourced fresh and delivered directly to your kitchen.</p>
+        <p class="section-desc cn">餐厅所需的一切食材，新鲜采购，直接配送到您的厨房。</p>
+      </div>
+      <div class="products-grid fade-up">
+        <div class="product-card">
+          <span class="product-icon">🥩</span>
+          <h3 class="en">Meat</h3>
+          <h3 class="cn">肉类</h3>
+          <p class="en">Fresh and quality cuts for every kitchen need — beef, pork, poultry and more.</p>
+          <p class="cn">各类新鲜优质肉品，满足厨房所有需求——牛肉、猪肉、禽肉等。</p>
+        </div>
+        <div class="product-card">
+          <span class="product-icon">🦐</span>
+          <h3 class="en">Seafood</h3>
+          <h3 class="cn">海鲜</h3>
+          <p class="en">Premium seafood sourced fresh — fish, shrimp, shellfish and more.</p>
+          <p class="cn">优质新鲜海鲜——鱼类、虾类、贝类等。</p>
+        </div>
+        <div class="product-card">
+          <span class="product-icon">🧊</span>
+          <h3 class="en">Frozen Foods</h3>
+          <h3 class="cn">冷冻食品</h3>
+          <p class="en">Wide selection of frozen goods for convenience and variety on your menu.</p>
+          <p class="cn">多种冷冻食品，为您的菜单提供便利和多样性。</p>
+        </div>
+        <div class="product-card">
+          <span class="product-icon">🌾</span>
+          <h3 class="en">Dry Goods & Seasonings</h3>
+          <h3 class="cn">干货调料</h3>
+          <p class="en">Staples, sauces, spices and pantry essentials to keep your kitchen stocked.</p>
+          <p class="cn">主食、酱料、香料及厨房必备品，确保您的厨房供应充足。</p>
+        </div>
+        <div class="product-card">
+          <span class="product-icon">🥬</span>
+          <h3 class="en">Vegetables</h3>
+          <h3 class="cn">蔬菜</h3>
+          <p class="en">Fresh produce delivered daily — leafy greens, root vegetables and more.</p>
+          <p class="cn">每日新鲜蔬菜配送——叶菜、根茎类蔬菜等。</p>
+        </div>
+        <div class="product-card">
+          <span class="product-icon">📦</span>
+          <h3 class="en">Packaging Supplies</h3>
+          <h3 class="cn">餐盒包装耗材</h3>
+          <p class="en">Takeout containers, boxes, bags and all packaging consumables for your operation.</p>
+          <p class="cn">外卖餐盒、包装袋及各类餐饮耗材，一站式供应。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COVERAGE -->
+  <section id="coverage">
+    <div class="section-inner">
+      <div class="coverage-layout">
+        <div class="fade-up">
+          <p class="section-label en">Where We Deliver</p>
+          <p class="section-label cn">配送区域</p>
+          <h2 class="section-title en">SERVICE<br>COVERAGE</h2>
+          <h2 class="section-title cn">配送范围<br>覆盖广泛</h2>
+          <p class="section-desc en">We deliver across the tri-state area and beyond, serving restaurants from New York to Houston.</p>
+          <p class="section-desc cn">我们的配送覆盖三州地区及更远地区，为纽约至休斯顿的餐厅提供服务。</p>
+          <div class="area-list">
+            <div class="area-item">Flushing, NY</div>
+            <div class="area-item">Manhattan, NY</div>
+            <div class="area-item">Brooklyn, NY</div>
+            <div class="area-item">LIC, NY</div>
+            <div class="area-item">New Jersey</div>
+            <div class="area-item">North Carolina</div>
+            <div class="area-item">Houston, TX</div>
+          </div>
+        </div>
+        <div class="fade-up">
+          <div class="coverage-map-bg">
+            <p class="section-label en">Delivery Hours</p>
+            <p class="section-label cn">配送时间</p>
+            <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:2px;margin-bottom:24px;">
+              <span class="en">MORNING TO EVENING</span>
+              <span class="cn">早晚全天配送</span>
+            </h3>
+            <p style="color:var(--gray);font-size:0.95rem;line-height:1.6;" class="en">We run deliveries from early morning through the evening so your kitchen is always stocked before service begins.</p>
+            <p style="color:var(--gray);font-size:0.95rem;line-height:1.6;" class="cn">我们从清晨到傍晚全天配送，确保您的厨房在营业前始终备货充足。</p>
+          </div>
+          <div class="hours-card">
+            <h4 class="en">DELIVERY SCHEDULE</h4>
+            <h4 class="cn">配送时间表</h4>
+            <div class="hours-row">
+              <span class="en">Monday – Friday</span><span class="cn">周一 – 周五</span>
+              <span class="en">Morning – Evening</span><span class="cn">早晨至傍晚</span>
+            </div>
+            <div class="hours-row">
+              <span class="en">Saturday</span><span class="cn">周六</span>
+              <span class="en">Morning – Evening</span><span class="cn">早晨至傍晚</span>
+            </div>
+            <div class="hours-row">
+              <span class="en">Orders via</span><span class="cn">订购方式</span>
+              <span class="en">Phone / WeChat</span><span class="cn">电话 / 微信</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why">
+    <div class="section-inner">
+      <div class="fade-up">
+        <p class="section-label en">Why Choose Us</p>
+        <p class="section-label cn">为什么选择我们</p>
+        <h2 class="section-title en">THE ZW FOODS<br>ADVANTAGE</h2>
+        <h2 class="section-title cn">ZW FOODS<br>的优势</h2>
+        <p class="section-desc en">We've built our business around making restaurant operations easier and more affordable.</p>
+        <p class="section-desc cn">我们致力于让餐厅运营更便捷、更经济实惠。</p>
+      </div>
+      <div class="why-grid fade-up">
+        <div class="why-card">
+          <span class="why-icon">💰</span>
+          <h3 class="en">COMPETITIVE PRICING</h3>
+          <h3 class="cn">价格实惠</h3>
+          <p class="en">Wholesale rates that keep your costs down and your margins up.</p>
+          <p class="cn">批发价格，降低您的成本，提高利润空间。</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">🌅</span>
+          <h3 class="en">ALL-DAY DELIVERY</h3>
+          <h3 class="cn">全天配送</h3>
+          <p class="en">Morning to evening delivery windows that work around your prep schedule.</p>
+          <p class="cn">早晨至傍晚灵活配送，配合您的备餐时间。</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">🗺️</span>
+          <h3 class="en">WIDE COVERAGE</h3>
+          <h3 class="cn">广泛覆盖</h3>
+          <p class="en">From Flushing to Houston — we reach restaurants others can't.</p>
+          <p class="cn">从法拉盛到休斯顿——我们的配送覆盖范围更广。</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">📱</span>
+          <h3 class="en">EASY ORDERING</h3>
+          <h3 class="cn">便捷订购</h3>
+          <p class="en">Order by phone, message, or WeChat Mini Program — whatever works best for you.</p>
+          <p class="cn">电话、短信或微信小程序均可下单，方便快捷。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="contact-layout">
+        <div class="fade-up">
+          <p class="section-label en">Get In Touch</p>
+          <p class="section-label cn">联系我们</p>
+          <h2 class="section-title en">START YOUR<br>ORDER TODAY</h2>
+          <h2 class="section-title cn">立即开始<br>您的订购</h2>
+          <p class="section-desc en">Reach out through any of these channels and we'll get back to you right away.</p>
+          <p class="section-desc cn">通过以下任何方式联系我们，我们将立即回复您。</p>
+          <div class="contact-methods">
+            <a href="tel:9293174160" class="contact-card">
+              <div class="contact-card-icon phone">📞</div>
+              <div class="contact-card-info">
+                <h4 class="en">Phone / SMS</h4>
+                <h4 class="cn">电话 / 短信</h4>
+                <p>(929) 317-4160</p>
+              </div>
+            </a>
+            <a href="weixin://dl/business/?t=ZWFoods" class="contact-card">
+              <div class="contact-card-icon wechat">💬</div>
+              <div class="contact-card-info">
+                <h4 class="en">WeChat Mini Program</h4>
+                <h4 class="cn">微信小程序</h4>
+                <p class="en">ZWFoods — Tap to open in WeChat</p>
+                <p class="cn">ZWFoods — 点击在微信中打开</p>
+              </div>
+            </a>
+            <a href="mailto:info@zwfoodinc.com" class="contact-card">
+              <div class="contact-card-icon email">✉️</div>
+              <div class="contact-card-info">
+                <h4 class="en">Email</h4>
+                <h4 class="cn">电子邮件</h4>
+                <p>info@zwfoodinc.com</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="contact-form-side fade-up">
+          <h3 class="en">REQUEST A QUOTE</h3>
+          <h3 class="cn">申请报价</h3>
+          <p class="en">Fill out the form and we'll reach out with pricing for your restaurant.</p>
+          <p class="cn">填写表格，我们将尽快与您联系并提供报价。</p>
+          <div class="form-group">
+            <label class="en">Restaurant Name</label>
+            <label class="cn">餐厅名称</label>
+            <input type="text" placeholder="Your restaurant name" />
+          </div>
+          <div class="form-group">
+            <label class="en">Contact Name</label>
+            <label class="cn">联系人姓名</label>
+            <input type="text" placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label class="en">Phone Number</label>
+            <label class="cn">电话号码</label>
+            <input type="tel" placeholder="(xxx) xxx-xxxx" />
+          </div>
+          <div class="form-group">
+            <label class="en">Location</label>
+            <label class="cn">地址</label>
+            <select>
+              <option value="" class="en">Select your area</option>
+              <option>Flushing, NY</option>
+              <option>Manhattan, NY</option>
+              <option>Brooklyn, NY</option>
+              <option>LIC, NY</option>
+              <option>New Jersey</option>
+              <option>North Carolina</option>
+              <option>Houston, TX</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="en">What do you need?</label>
+            <label class="cn">您需要什么产品？</label>
+            <textarea placeholder="Tell us what products you're looking for..."></textarea>
+          </div>
+          <button class="form-submit en">Send Request</button>
+          <button class="form-submit cn">发送申请</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="nav-logo-text" style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:white;letter-spacing:2px;">ZW FOODS</span>
+          <p class="en">Premium wholesale food supplier serving restaurants across New York, New Jersey, North Carolina, and Houston. Fresh ingredients delivered morning to evening.</p>
+          <p class="cn">优质批发食材供应商，为纽约、新泽西、北卡罗来纳及休斯顿地区餐厅提供服务。每日早晚新鲜配送。</p>
+        </div>
+        <div class="footer-col">
+          <h4 class="en">Products</h4>
+          <h4 class="cn">产品</h4>
+          <ul>
+            <li><a href="#products"><span class="en">Meat</span><span class="cn">肉类</span></a></li>
+            <li><a href="#products"><span class="en">Seafood</span><span class="cn">海鲜</span></a></li>
+            <li><a href="#products"><span class="en">Frozen Foods</span><span class="cn">冷冻食品</span></a></li>
+            <li><a href="#products"><span class="en">Dry Goods</span><span class="cn">干货调料</span></a></li>
+            <li><a href="#products"><span class="en">Vegetables</span><span class="cn">蔬菜</span></a></li>
+            <li><a href="#products"><span class="en">Packaging</span><span class="cn">包装耗材</span></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="en">Contact</h4>
+          <h4 class="cn">联系方式</h4>
+          <ul>
+            <li><a href="tel:9293174160">(929) 317-4160</a></li>
+            <li><a href="mailto:info@zwfoodinc.com">info@zwfoodinc.com</a></li>
+            <li><a href="#contact"><span class="en">WeChat Mini Program</span><span class="cn">微信小程序</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 <span>Z&W Food Inc.</span> <span class="en">All rights reserved.</span><span class="cn">版权所有。</span></p>
+        <p class="en">Serving restaurants across the East Coast & beyond.</p>
+        <p class="cn">服务于东海岸及更广地区的餐厅。</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      document.body.classList.toggle('lang-cn', lang === 'cn');
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+    }
+
+    // Fade-up on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
